@@ -548,7 +548,12 @@ function isWeixin(){
 	transform: translate3d(0,0,0);
 }
 ```
-
+- 解决ios端overflow：scroll时滑动卡顿问题
+```
+.css {
+    -webkit-overflow-scrolling:touch;
+}
+````
 
 - 渲染优化
 ```
@@ -568,7 +573,6 @@ function isWeixin(){
 ####常用的移动端框架
 - zepto.js
 	- [官网](http://zeptojs.com/)
-	- [中文网](http://www.css88.com/doc/zeptojs_api/)
 	- [浏览器检测](https://github.com/madrobby/zepto/blob/master/src/detect.js)
 	- [tap事件](https://github.com/madrobby/zepto/blob/master/src/touch.js)
 	
