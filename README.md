@@ -264,11 +264,57 @@ input[type=number]::-ms-clear { display:none; }
 - 移动端字体单位font-size选择px还是rem
 ```
 // 如需适配多种移动设备，建议使用rem。以下为参考值：
-html { font-size: 62.5%; }   //10*16 = 62.5%
+html { font-size: 62.5%; }   //10/16 = 62.5%
 //设置12px字体   这里注意在rem前要加上对应的px值，解决不支持rem的浏览器的兼容问题，做到优雅降级
 body { font-size:12px; font-size:1.2rem; }     
 ```
 
+- 根据屏幕尺寸修改viewpoint来实现自适应
+```
+var docEl = window.document.documentElement;
+var width = docEl.getBoundingClientRect().width;
+//根矩屏幕尺寸进行缩放
+if (width !== 640) {
+   var rate = width / 640;
+   var content = 'width=device-width,minimum-scale=' + rate +
+                 ',maximum-scale=' + rate +
+                 ',initial-scale=' + rate +
+                 ',user-scalable=no'
+   document.getElementById('viewport').setAttribute('content',content);
+}
+```
+
+- 根据设备尺寸尺寸来修改rem的值以达到自适应
+
+```
+// 根据设备尺寸尺寸来修改rem的值以达到自适应
+var tender = {
+	$j_root: document.querySelector("html"),
+	// 设计稿尺寸
+	BASE_SIZE:750,
+
+	// 默认的rem值
+	BASE_FONT: 100,
+	/**
+	 * [changeRem 根据尺寸改变rem值]
+	 * @return {[type]} [description]
+	 */
+	changeRem: function() {
+	    var docEl = window.document.documentElement;
+	    // 设备尺寸
+	    var width = docEl.getBoundingClientRect().width;
+
+	    this.$j_root.style.fontSize = width / this.BASE_SIZE * this.BASE_FONT + "px";
+	},
+	bindEvent:function(){
+	    window.onresize = function(){
+	        tender.changeRem();
+		}
+	}
+};
+
+tender.bindEvent();
+```
 
 - 超实用的CSS样式
 ```
