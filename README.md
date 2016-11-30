@@ -426,6 +426,7 @@ document.addEventListener("WeixinJSBridgeReady", function () {
 //小结
 //1.audio元素的autoplay属性在IOS及Android上无法使用，在PC端正常
 //2.audio元素没有设置controls时，在IOS及Android会占据空间大小，而在PC端Chrome是不会占据任何空间
+//3. 微信中，单纯的将video或者audio隐藏并暂停无效，需要动态的移除和创建该dom元素。这种情况多见于弹出框中有video或audio
 ```
 
 - 重力感应事件
