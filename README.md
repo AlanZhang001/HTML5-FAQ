@@ -621,13 +621,5 @@ function isWeixin(){
 	//1.减少HTTP请求；
 	//2.避免文件跨域；
 	//3.修改及时生效；
-``` 
-
-
-
-####常用的移动端框架
-- zepto.js
-	- [官网](http://zeptojs.com/)
-	- [浏览器检测](https://github.com/madrobby/zepto/blob/master/src/detect.js)
-	- [tap事件](https://github.com/madrobby/zepto/blob/master/src/touch.js)
+```
 	
