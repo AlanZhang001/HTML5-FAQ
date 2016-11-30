@@ -319,14 +319,14 @@ tender.bindEvent();
 - 超实用的CSS样式
 ```
 //去掉webkit的滚动条——display: none;
-//其他参数
-::-webkit-scrollba //滚动条整体部分
-::-webkit-scrollbar-thumb   //滚动条内的小方块
-::-webkit-scrollbar-track   //滚动条轨道
-::-webkit-scrollbar-button  //滚动条轨道两端按钮
+//其他参数,目前在IOS上测试无效
+::-webkit-scrollba               //滚动条整体部分
+::-webkit-scrollbar-thumb        //滚动条内的小方块
+::-webkit-scrollbar-track        //滚动条轨道
+::-webkit-scrollbar-button       //滚动条轨道两端按钮
 ::-webkit-scrollbar-track-piece  //滚动条中间部分，内置轨道
 ::-webkit-scrollbar-corner       //边角，两个滚动条交汇处
-::-webkit-resizer            //两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
+::-webkit-resizer                //两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
 
 // 禁止长按链接与图片弹出菜单
 a,img { -webkit-touch-callout: none }    
@@ -335,14 +335,22 @@ a,img { -webkit-touch-callout: none }
 html,body {-webkit-user-select:none; user-select: none; }
 
 // 改变输入框placeholder的颜色值
-::-webkit-input-placeholder { /* WebKit browsers */
-color: #999; }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-color: #999; }
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-color: #999; }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-color: #999; }
+::-webkit-input-placeholder { 
+	/* WebKit browsers */
+	color: #999; 
+}
+:-moz-placeholder { 
+	/* Mozilla Firefox 4 to 18 */
+	color: #999; 
+}
+::-moz-placeholder { 
+	/* Mozilla Firefox 19+ */
+	color: #999; 
+}
+:-ms-input-placeholder { 
+	/* Internet Explorer 10+ */
+	color: #999; 
+}
 input:focus::-webkit-input-placeholder{ color:#999; }
 
 // android上去掉语音输入按钮
