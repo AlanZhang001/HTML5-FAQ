@@ -621,11 +621,15 @@ function isWeixin(){
 	//1.减少HTTP请求；
 	//2.避免文件跨域；
 	//3.修改及时生效；
+```
+
 
 - IOS 事件委托的坑
 当使用委托给一个元素添加click事件时，如果事件是委托到 document 或 body 上，并且委托的元素是默认不可点击的（如 div, span 等），此时 click 事件会失效。
 解决办法：
-​ 	- 将 click 事件直接绑定到目标​元素（​​即 .target）上
- 	- 将目标​元素换成 <a> 或者 button 等可点击的​元素
-​ 	- 将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上（推荐）
-​ 	- 给​目标元素加一条样式规则 cursor: pointer;（推荐）
+```
+​1. 将 click 事件直接绑定到目标​元素（​​即 .target）上
+2. 将目标​元素换成 <a> 或者 button 等可点击的​元素
+​3. 将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上（推荐）
+​4. 给​目标元素加一条样式规则 cursor: pointer;（推荐）
+```
