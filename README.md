@@ -201,6 +201,35 @@ fastclick可以解决在手机上点击事件的300ms延迟
 zepto的touch模块，tap事件也是为了解决在click的延迟问题
 ```
 
+- 简易的fastclick模拟示例。[demo](demo/fastclick.html)
+
+```html&javascript
+    <body>
+        <h2>fastclick模拟测试</h2>
+        <br/>
+        <div class="demo">捕获tap</div>
+    </body>
+    <script type="text/javascript">
+        var demo = document.querySelector('.demo');
+        demo.addEventListener('touchstart',function(e){
+            // 阻止默认事件，阻止tap事件引起的click
+            e.preventDefault();
+
+            // 创建点击事件并触发
+            var event = document.createEvent("MouseEvents");
+            event.initMouseEvent("click",true,true,document.defaultView,0,0,0,0,0,false,false,false,false,0,null);
+            event.alisename = "tap";
+            e.target.dispatchEvent(event);
+        });
+
+        demo.addEventListener('click',function(e){
+            console.log(e.target);
+            alert(e.alisename);
+        });
+
+    </script>
+
+```
 
 - Rentina显示屏原理及设计方案
 ```
