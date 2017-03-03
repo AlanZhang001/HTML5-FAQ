@@ -640,12 +640,13 @@ function isWeixin(){
 	transform: translate3d(0,0,0);
 }
 ```
+
 - 解决ios端overflow：scroll时滑动卡顿问题
 ```
 .css {
     -webkit-overflow-scrolling:touch;
 }
-````
+```
 
 - 渲染优化
 ```
@@ -669,4 +670,24 @@ function isWeixin(){
 2. 将目标​元素换成 <a> 或者 button 等可点击的​元素
 ​3. 将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上（推荐）
 ​4. 给​目标元素加一条样式规则 cursor: pointer;（推荐）
+```
+
+
+- 最小字体的总结【参考http://www.cnblogs.com/he-lian/p/4512276.html】
+
+```
+ 1.     iphone6-plus、iphone5：     微信、QQ直接打开、safari中字体可以从最1px字体开始；
+ 2.     小米2s：微信、QQ浏览器最小显示字体8px；自带浏览器最小字体从1px开始；
+ 3.     小米4s：firefox可以从最小字体1px开始；chrome中最小显示字体为12px；
+ 4.     pc：360安全浏览器7：最小最示12px；firefox与ie10最小显示字体为1px。
+ 5.     未标明的为未测机型；
+ 
+ 结论1：
+    - 移动端最小字体为12px（仅chrome有此限制），建议最小使用12px；
+    - 如果设计稿中有小于12px的字体，按实际字号写css样式；
+ 
+ 结论2：
+    - iphone类移动设备不受最小字号限制；
+    - 其它设备可能会受8px限制；
+    - chrome中限制最小12px。
 ```
