@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta charset="<%$app->charset%>"/>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="renderer" content="webkit">
+        <title>移动端下拉时加载</title>
+        <link rel="stylesheet" type="text/css" href="../lib/normalize.css"/>
+        <style type="text/css">
+            body{
+                overflow-y: hidden;
+            }
+            img{
+                width: 200px;
+                height: 100px;
+                border: none;
+                overflow: hidden;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                height: 500px;
+                overflow: auto;
+                border: 1px solid #dedede;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>滚动到底部时加载功能</h3>
+        <ul class="wrapper">
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module01_01.jpg" alt="加载中"></li>
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module01_02.jpg" alt="加载中"></li>
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module01_03.jpg" alt="加载中"></li>
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module01_04.jpg" alt="加载中"></li>
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module02_01.jpg" alt="加载中"></li>
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module02_01.jpg" alt="加载中"></li>
+            <li><img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module01_03.jpg" alt="加载中"></li>
+    </body>
+    <script type="text/javascript">
+        var tempplate = '<img src="https://webopsstaticresource-10000538.file.myqcloud.com/nnuniversity/images/university2017/module01_01.jpg" alt="加载中">';
+        var $container = document.querySelector('.wrapper');
+        // 可见高度
+        var clientHeight = $container.clientHeight;
+        $container.addEventListener('scroll',function(e){
+            // 可见高度
+            contentH = $container.scrollHeight;
+            //滚动高度
+            scrollTop =  $container.scrollTop;
+            // 滑动到底部了
+            if(contentH - clientHeight - scrollTop < 10) {
+                var li = document.createElement('li');
+                li.innerHTML = tempplate;
+                $container.appendChild(li);
+            }
+        });
+    </script>
+</html>

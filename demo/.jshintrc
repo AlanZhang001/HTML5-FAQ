@@ -1,0 +1,10 @@
+{
+	"strict":false,
+	"unused":false,
+	"browser": true,
+	"quotmark":"single",
+	"expr":true,
+	"loopfunc":true,
+	"globals":["define","require"],
+    "esversion":6
+}

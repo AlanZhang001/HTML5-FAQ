@@ -691,3 +691,21 @@ function isWeixin(){
     - 其它设备可能会受8px限制；
     - chrome中限制最小12px。
 ```
+
+- 移动端滚动到底部时加载代码。[demo](demo/pulldownLoad.html)
+```
+var $container = document.querySelector('.wrapper');
+// 可见高度
+var clientHeight = $container.clientHeight;
+$container.addEventListener('scroll',function(e){
+    // 整个内容高度
+    contentH = $container.scrollHeight;
+    //滚动高度
+    scrollTop =  $container.scrollTop;
+    // 滑动到底部了
+    if(contentH - clientHeight - scrollTop < 10) {
+        // 滚动到底部时的回调
+         doSomething();
+    }
+});
+```
