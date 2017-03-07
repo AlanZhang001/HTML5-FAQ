@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta charset="<%$app->charset%>"/>
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="renderer" content="webkit">
+        <title>测试图片懒加载功能</title>
+        <style type="text/css">
+            html,body{
+                height: 100%;
+                overflow-y: hidden;
+            }
+            img{
+                width: 200px;
+                height: 100px;
+                border: none;
+                overflow: hidden;
+            }
+            ul{
+                margin: 0;
+                padding: 0;
+                height: 400px;
+                overflow-y: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h3>测试图片懒加载功能</h3>
+        <ul class="wrapper">
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038543716.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038574300.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038688226.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038706326.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038721786.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038734090.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038767907.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038787096.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038800586.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038913255.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038965040.jpg" alt="加载中"></li>
+            <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488039010889.jpg" alt="加载中"></li>
+        </ul>
+    </body>
+    <script type="text/javascript">
+        // 用于滚动的容器
+        var $container = document.querySelector('.wrapper');
+        // 容器的高度
+        var clientHeight = $container.clientHeight;
+        // 容器的下边框的offsetheight，当容器的下边框不在可视区域之内是，屏幕高度作为下边框
+        var bottomOffset = Math.min(clientHeight + $container.offsetTop,window.innerHeight);
+        // 需要用于更新的元素
+        var items = [...document.querySelectorAll('.item')];
+
+        // 更新页面上的元素
+        function update(){
+            items.forEach(item=>{
+                // 元素进入视野，且没有进行处理过
+                if(item.getBoundingClientRect().top <= bottomOffset &&
+                    !item.classList.contains('loaded')){
+                    var img = item.querySelector('img');
+                    img.setAttribute('src',img.getAttribute('link'));
+                    item.classList.add('loaded');
+                }
+            });
+        }
+
+        // 滚动及页面加载完成也进行处理
+        update();
+        $container.addEventListener('scroll',()=>{
+            update();
+        });
+    </script>
+</html>

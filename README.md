@@ -709,3 +709,44 @@ $container.addEventListener('scroll',function(e){
     }
 });
 ```
+
+- 图片的懒加载，img标签进入时才加载图片[demo](demo/lazyload2.html)
+```
+<body>
+    <h3>测试图片懒加载功能</h3>
+    <ul class="wrapper">
+        <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038543716.jpg" alt="加载中"></li>
+        <li class="item"><img src="#" link="http://difang.kaiwind.com/zhejiang/jctp/201407/18/W020140718488038574300.jpg" alt="加载中"></li>
+    </ul>
+</body>
+<script type="text/javascript">
+    // 用于滚动的容器
+    var $container = document.querySelector('.wrapper');
+    // 容器的高度
+    var clientHeight = $container.clientHeight;
+    // 容器的下边框的offsetheight，当容器的下边框不在可视区域之内是，屏幕高度作为下边框
+    var bottomOffset = Math.min(clientHeight + $container.offsetTop,window.innerHeight);
+    // 需要用于更新的元素
+    var items = [...document.querySelectorAll('.item')];
+
+    // 更新页面上的元素
+    function update(){
+        items.forEach(item=>{
+            // 元素进入视野，且没有进行处理过
+            if(item.getBoundingClientRect().top <= bottomOffset &&
+                !item.classList.contains('loaded')){
+                var img = item.querySelector('img');
+                // 设置图片的地址
+                img.setAttribute('src',img.getAttribute('link'));
+                item.classList.add('loaded');
+            }
+        });
+    }
+
+    // 滚动及页面加载完成也进行处理
+    update();
+    $container.addEventListener('scroll',()=>{
+        update();
+    });
+</script>
+```
