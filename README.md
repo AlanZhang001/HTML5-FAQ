@@ -661,8 +661,8 @@ function isWeixin(){
 	//3.修改及时生效；
 ```
 
-
 - IOS 事件委托的坑
+
 当使用委托给一个元素添加click事件时，如果事件是委托到 document 或 body 上，并且委托的元素是默认不可点击的（如 div, span 等），此时 click 事件会失效。
 解决办法：
 ```
@@ -670,6 +670,12 @@ function isWeixin(){
 2. 将目标​元素换成 <a> 或者 button 等可点击的​元素
 ​3. 将 click 事件委托到​​​​​非 document 或 body 的​​父级元素上（推荐）
 ​4. 给​目标元素加一条样式规则 cursor: pointer;（推荐）
+```
+
+- IOS `<input readonly type="text/>`标签 readonly后仍然能出现焦点效果（光标在input中）
+解决办法是给input设置不能选中的样式
+```
+html,body {-webkit-user-select:none; user-select: none; }
 ```
 
 
