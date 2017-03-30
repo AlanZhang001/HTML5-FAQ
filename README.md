@@ -672,10 +672,10 @@ function isWeixin(){
 ​4. 给​目标元素加一条样式规则 cursor: pointer;（推荐）
 ```
 
-- IOS `<input readonly type="text/>`标签 readonly后仍然能出现焦点效果（光标在input中）
+- IOS `<input class='xx-xx' readonly type="text/>`标签 readonly后仍然能出现焦点效果（光标在input中）
 解决办法是给input设置不能选中的样式
 ```
-html,body {-webkit-user-select:none; user-select: none; }
+.xx-xx {-webkit-user-select:none; user-select: none; }
 ```
 
 
