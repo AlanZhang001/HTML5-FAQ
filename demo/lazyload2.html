@@ -51,7 +51,7 @@
         // 容器的高度
         var clientHeight = $container.clientHeight;
         // 容器的下边框的offsetheight，当容器的下边框不在可视区域之内是，屏幕高度作为下边框
-        var bottomOffset = Math.min(clientHeight + $container.offsetTop,window.innerHeight);
+        var bottomOffset = Math.min($container.getBoundingClientRect().bottom,window.innerHeight);
         // 需要用于更新的元素
         var items = [...document.querySelectorAll('.item')];
 
