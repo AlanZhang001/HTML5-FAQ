@@ -771,3 +771,20 @@ body{
     font-family:Helvetica;
 }
 ```
+
+- IOS的字体锯齿问题
+```
+IOS上，做3D变换时，经常会出现字体模糊的情况，通过-webkit-font-smoothing属性的设置可解决大部分的字体模糊情况，参考<https://segmentfault.com/q/1010000000467910>。
+
+-webkit-font-smoothing
+它有三个属性值：
+    none ------ 对低像素的文本比较好
+    subpixel-antialiased------默认值
+    antialiased ------抗锯齿很好 
+
+例子：
+body{
+    -webkit-font-smoothing: antialiased;
+}
+
+```
