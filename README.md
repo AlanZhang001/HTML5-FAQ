@@ -788,3 +788,16 @@ body{
 }
 
 ```
+
+- 多行文字的截断，最后一段显示....
+```
+.demo{
+    display: -webkit-box;    //1.设置display类型为-webkit-box
+    font-size: 14px;
+    line-height: 18px;
+    overflow: hidden;        //2.设置元素超出隐藏
+    text-overflow: ellipsis; //3.设置超出样式为省略号
+    -webkit-line-clamp: 2;   //4.设置2行应用省略
+    -webkit-box-orient: vertical;
+}
+```
