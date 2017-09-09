@@ -305,7 +305,7 @@ var width = docEl.getBoundingClientRect().width;
 //根矩屏幕尺寸进行缩放
 if (width !== 640) {
    var rate = width / 640;
-   var content = 'width=device-width,minimum-scale=' + rate +
+   var content = 'width=640,minimum-scale=' + rate +
                  ',maximum-scale=' + rate +
                  ',initial-scale=' + rate +
                  ',user-scalable=no'
