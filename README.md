@@ -801,3 +801,38 @@ body{
     -webkit-box-orient: vertical;
 }
 ```
+
+- 防止微信webview 调整字体大小
+ios 和 微信的调整方式不一致
+```
+<!--针对IOS-->
+<style type="text/css">
+    body {
+        -webkit-text-size-adjust: 100% !important;
+    }
+</style>
+<!--针对Android-->
+<script type="text/javascript">
+    (function() {
+        if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+            handleFontSize();
+        } else {
+            if (document.addEventListener) {
+                document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+            } else if (document.attachEvent) {
+                document.attachEvent("WeixinJSBridgeReady", handleFontSize);
+                document.attachEvent("onWeixinJSBridgeReady", handleFontSize);
+            }
+        }
+
+        function handleFontSize() {
+            // 设置网页字体为默认大小
+            WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+            // 重写设置网页字体大小的事件
+            WeixinJSBridge.on('menu:setfont', function() {
+                WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+            });
+        }
+    })();
+</script>
+```
