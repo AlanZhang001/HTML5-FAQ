@@ -836,3 +836,5 @@ ios 和 微信的调整方式不一致
     })();
 </script>
 ```
+
+- window.open 不能在ajax的异步回调中使用，且ios中(ios>9.0),touchstart,touchend 事件是不能触发window.open 的
