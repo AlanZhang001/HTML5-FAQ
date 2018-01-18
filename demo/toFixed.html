@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript" src="./toFixed.js"></script>
+    <script type="text/javascript">
+        console.log(toFixed('1234',3,true));//1234.000
+        console.log(toFixed('1234',3,false));//1234.000
+        console.log(toFixed('1234',0,false));//1234
+        console.log(toFixed('1234',0,true)); //1234
+        console.log(toFixed(999.999999,0,true));//1000
+        console.log(toFixed(999.999999,0,false));//1000
+        console.log(toFixed(999.999999,8,true));//999.99999900
+        console.log(toFixed(999.999999,8,false));//999.99999900
+        console.log(toFixed(999.999999,2,true));//1000.00
+        console.log(toFixed(999.999999,2,false));//999.99
+        console.log(toFixed(999.999999,4,true));//1000.0000
+        console.log(toFixed(999.999999,4,false));//999.9999
+        console.log(toFixed(999.,0,true));//999
+        console.log(toFixed(999.,0,false));//999
+        console.log(toFixed(999.,8,true));//999.00000000
+        console.log(toFixed(999.,8,false));//999.00000000
+        console.log(toFixed(999.,2,true));//999.00
+        console.log(toFixed(999.,2,false));//999.00
+        console.log(toFixed(0.999999,0,true));//1
+        console.log(toFixed(0.999999,0,false));//0
+        console.log(toFixed(0.999999,8,true));//0.99999900
+        console.log(toFixed(0.999999,8,false));//0.99999900
+        console.log(toFixed(0.999999,4,true));//1.0000
+        console.log(toFixed(0.999999,4,false));//0.9999
+        console.log(toFixed(0.999999,2,true));//1.00
+        console.log(toFixed(0.999999,2,false));//0.99
+        console.log(toFixed(.999999,0,true));//1
+        console.log(toFixed(.999999,0,false));//0
+        console.log(toFixed(.999999,8,true));//0.99999900
+        console.log(toFixed(.999999,8,false));//0.99999900
+        console.log(toFixed(.999999,4,true));//1.0000
+        console.log(toFixed(.999999,4,false));//0.9999
+        console.log(toFixed(.999999,2,true));//1.00
+        console.log(toFixed(.999999,2,false));//0.99
+
+
+        console.log(toFixed('-1234',3,true));//-1234.000
+        console.log(toFixed('-1234',3,false));//-1234.000
+        console.log(toFixed('-1234',0,false));//-1234
+        console.log(toFixed('-1234',0,true)); //-1234
+        console.log(toFixed(-999.999999,0,true));//-1000
+        console.log(toFixed(-999.999999,0,false));//-1000
+        console.log(toFixed(-999.999999,8,true));//-999.99999900
+        console.log(toFixed(-999.999999,8,false));//-999.99999900
+        console.log(toFixed(-999.999999,2,true));//-1000.00
+        console.log(toFixed(-999.999999,2,false));//-999.99
+        console.log(toFixed(-999.999999,4,true));//-1000.0000
+        console.log(toFixed(-999.999999,4,false));//-999.9999
+        console.log(toFixed(-999.,0,true));//-999
+        console.log(toFixed(-999.,0,false));//-999
+        console.log(toFixed(-999.,8,true));//-999.00000000
+        console.log(toFixed(-999.,8,false));//-999.00000000
+        console.log(toFixed(-999.,2,true));//-999.00
+        console.log(toFixed(-999.,2,false));//-999.00
+        console.log(toFixed(-0.999999,0,true));//-1
+        console.log(toFixed(-0.999999,0,false));//-0
+        console.log(toFixed(-0.999999,8,true));//-0.99999900
+        console.log(toFixed(-0.999999,8,false));//-0.99999900
+        console.log(toFixed(-0.999999,4,true));//-1.0000
+        console.log(toFixed(-0.999999,4,false));//-0.9999
+        console.log(toFixed(-0.999999,2,true));//-1.00
+        console.log(toFixed(-0.999999,2,false));//-0.99
+        console.log(toFixed(-.999999,0,true));//-1
+        console.log(toFixed(-.999999,0,false));//-0
+        console.log(toFixed(-.999999,8,true));//-0.99999900
+        console.log(toFixed(-.999999,8,false));//-0.99999900
+        console.log(toFixed(-.999999,4,true));//-1.0000
+        console.log(toFixed(-.999999,4,false));//-0.9999
+        console.log(toFixed(-.999999,2,true));//-1.00
+        console.log(toFixed(-.999999,2,false));//-0.99
+    </script>
+</html>
