@@ -1,0 +1,19 @@
+{
+  "name": "html5-faq",
+  "version": "1.0.0",
+  "description": "常见的问题集锦",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlanZhang001/HTML5-FAQ.git"
+  },
+  "author": "alanzhang001@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlanZhang001/HTML5-FAQ/issues"
+  },
+  "homepage": "https://github.com/AlanZhang001/HTML5-FAQ#readme"
+}
