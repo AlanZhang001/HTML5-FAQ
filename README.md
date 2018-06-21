@@ -633,12 +633,38 @@ function isWeixin(){
 - 开启硬件加速
 ``` CSS
 //目前，像Chrome/Filefox/Safari/IE9+以及最新版本Opera都支持硬件加速，当检测到某个DOM元素应用了某些CSS规则时就会自动开启，从而解决页面闪白，保证动画流畅。
+
+方法1：
 .css {
 	-webkit-transform: translate3d(0,0,0);
 	-moz-transform: translate3d(0,0,0);
 	-ms-transform: translate3d(0,0,0);
 	transform: translate3d(0,0,0);
+
+    position: relative;
+    z-index: 1;  // 可以设大点，尽量设得比兄弟元素的z-index值高
 }
+// 注意：使用3D硬件加速提升动画性能时，最好给元素增加一个z-index属性，人为干扰复合层的排序，可以有效减少chrome创建不必要的复合层，提升渲染性能，移动端优化效果尤为明显。详细的说明：<https://div.io/topic/1348?utm_source=tuicool>
+
+方法2：
+.css{
+    -webkit-transform: translateZ(0);
+   -moz-transform: translateZ(0);
+   -ms-transform: translateZ(0);
+   -o-transform: translateZ(0);
+   transform: translateZ(0);
+
+    // 以上样式触发硬件加速后会出现 “页面可能会出现闪烁的效果“ 的问题,需要补充以下样式
+   -webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+   -ms-backface-visibility: hidden;
+   backface-visibility: hidden;
+   -webkit-perspective: 1000;
+   -moz-perspective: 1000;
+   -ms-perspective: 1000;
+   perspective: 1000;
+}
+
 ```
 
 - 解决ios端overflow：scroll时滑动卡顿问题
@@ -850,7 +876,7 @@ ios 和 微信的调整方式不一致
 1.3333335.toFixed(6) // 1.333333 错误
 ```
 
-重写toFixed的实现即可：demo见[toFixed.html](./demo/toFixed.html)
+重写toFixed的实现即可：demo见[toFixed.html](./demo/toFixed.html)，或者直接安装`npm install num-tofixed`
 
 ```
 /**
@@ -922,4 +948,63 @@ function toFixed(num, digits, isRound) {
     result = isPositive ? result : '-' + result;
     return result;
 }
+```
+
+- 计算字符串所占的内存字节数,而不是字符串长度
+```
+    /**
+     * 计算字符串所占的内存字节数，默认使用UTF-8的编码方式计算，也可制定为UTF-16
+     * UTF-8 是一种可变长度的 Unicode 编码格式，使用一至四个字节为每个字符编码
+     *
+     * 000000 - 00007F(128个代码)      0zzzzzzz(00-7F)                             一个字节
+     * 000080 - 0007FF(1920个代码)     110yyyyy(C0-DF) 10zzzzzz(80-BF)             两个字节
+     * 000800 - 00D7FF
+       00E000 - 00FFFF(61440个代码)    1110xxxx(E0-EF) 10yyyyyy 10zzzzzz           三个字节
+     * 010000 - 10FFFF(1048576个代码)  11110www(F0-F7) 10xxxxxx 10yyyyyy 10zzzzzz  四个字节
+     *
+     * 注: Unicode在范围 D800-DFFF 中不存在任何字符
+     *
+     * UTF-16 大部分使用两个字节编码，编码超出 65535 的使用四个字节
+     * 000000 - 00FFFF  两个字节
+     * 010000 - 10FFFF  四个字节
+     *
+     * @param  {String} str
+     * @param  {String} charset utf-8, utf-16
+     * @return {Number}
+     */
+    byteLength: function(charset) {
+        var str = this.valueOf();
+        var total = 0,
+            charCode,
+            i,
+            len;
+
+        charset = charset ? charset.toLowerCase() : '';
+
+        if (charset === 'utf-16' || charset === 'utf16') {
+            for (i = 0, len = str.length; i < len; i++) {
+                charCode = str.charCodeAt(i);
+                if (charCode <= 0xffff) {
+                    total += 2;
+                } else {
+                    total += 4;
+                }
+            }
+        } else {
+            for (i = 0, len = str.length; i < len; i++) {
+                charCode = str.charCodeAt(i);
+                if (charCode <= 0x007f) {
+                    total += 1;
+                } else if (charCode <= 0x07ff) {
+                    total += 2;
+                } else if (charCode <= 0xffff) {
+                    total += 3;
+                } else {
+                    total += 4;
+                }
+            }
+        }
+
+        return total;
+    }
 ```

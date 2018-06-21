@@ -4,7 +4,8 @@
   "description": "常见的问题集锦",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "npm install -d",
+    "test": "http-server ./ -a localhost -p 8000 -c-1"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/AlanZhang001/HTML5-FAQ/issues"
   },
-  "homepage": "https://github.com/AlanZhang001/HTML5-FAQ#readme"
+  "homepage": "https://github.com/AlanZhang001/HTML5-FAQ#readme",
+  "dependencies": {
+    "dom-to-image": "^2.6.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.10.0"
+  }
 }
