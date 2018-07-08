@@ -369,7 +369,13 @@ tender.bindEvent();
 a,img { -webkit-touch-callout: none }    
 
 // 禁止ios和android用户选中文字
-html,body {-webkit-user-select:none; user-select: none; }
+html,body {
+    -webkit-user-select:none; 
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select: none; 
+    cursor:default;
+}
 
 // 改变输入框placeholder的颜色值
 ::-webkit-input-placeholder { 
