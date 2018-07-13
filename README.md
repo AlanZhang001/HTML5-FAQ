@@ -1014,3 +1014,14 @@ function toFixed(num, digits, isRound) {
         return total;
     }
 ```
+
+- https站点中，如果应用到了第三发的组件（如腾讯视频），有时候会存在https站点中引用http资源的情况，会出现警告甚至报错
+比如 ![](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/imgs/passive-mixed-content-warnings.png?hl=zh-cn)
+
+可以在head中增加如下标签：
+```
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+```
+值得注意的是，如果资源不能通过 HTTPS 获得，则升级的请求失败，并且无法加载该资源
+
+详细查看:(防止混合内容)[https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content?hl=zh-cn]
