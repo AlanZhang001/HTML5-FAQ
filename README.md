@@ -1025,3 +1025,17 @@ function toFixed(num, digits, isRound) {
 值得注意的是，如果资源不能通过 HTTPS 获得，则升级的请求失败，并且无法加载该资源
 
 详细查看:(防止混合内容)[https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content?hl=zh-cn]
+
+- ios上，从A页面跳入B页面，再次返回A页面时，html不会刷新，但是JS会再次执行。
+```
+<!--移动端回退时，reload-->
+<script type="text/javascript">
+    window.addEventListener('pageshow', function(e) {
+    	// 有浏览器不支持persisted属性，则通过判断回退来进行reload
+        if (e.persisted || window.performance &&
+            window.performance.navigation.type === 2) {
+            window.location.reload();
+        }
+    });
+</script>
+```
