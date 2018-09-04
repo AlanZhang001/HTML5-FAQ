@@ -1,7 +1,8 @@
 ### H5项目常见问题及注意事项
 
 #### Meta基础知识： 
-- H5页面窗口自动调整到设备宽度，并禁止用户缩放页面
+
+##### H5页面窗口自动调整到设备宽度，并禁止用户缩放页面
 ``` Javascript
 //一、HTML页面结构
 <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
@@ -28,7 +29,7 @@ if (/Android (\d+\.\d+)/.test(ua)){
 }
 ```
 
-- H5空白页基本meta标签
+##### H5空白页基本meta标签
 ```
 <!-- 设置缩放 -->
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui" />
@@ -40,7 +41,7 @@ if (/Android (\d+\.\d+)/.test(ua)){
 <meta name="format-detection"content="telephone=no, email=no" />
 ```
 
-- PC端基础meta标签
+##### PC端基础meta标签
 ```
 <!-- 页面关键词-->
 <meta name="keywords" content="your tags" />
@@ -62,15 +63,15 @@ if (/Android (\d+\.\d+)/.test(ua)){
  
 ```
 
-- 页面缓存设置
+##### 页面缓存设置
 ```
-<!-- 清除缓存 -->
+<!-- 清除缓存 http1.0 -->
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">   
 ```
 
-- 其他meta标签
+##### 其他meta标签
 ```
 <!-- 启用360浏览器的极速模式(webkit) -->
 <meta name="renderer" content="webkit">
@@ -103,7 +104,8 @@ if (/Android (\d+\.\d+)/.test(ua)){
 
 
 #### 常见问题：
-- 移动端如何定义字体font-family
+
+##### 移动端如何定义字体font-family
 ``` CSS
 @ --------------------------------------中文字体的英文名称
 @ 宋体      SimSun
@@ -125,7 +127,7 @@ body { font-family: Microsoft Yahei,SimSun,Helvetica; }
 ```
 
 
-- 打电话发短信写邮件怎么实现
+##### 打电话发短信写邮件怎么实现
 ``` HTML
 // 一、打电话
 <a href="tel:0755-10086">打电话给:0755-10086</a>
@@ -156,7 +158,7 @@ body { font-family: Microsoft Yahei,SimSun,Helvetica; }
 ```
 
 
-- 移动端touch事件（区分webkit和winphone）
+##### 移动端touch事件（区分webkit和winphone）
 ```
 /* 当用户手指放在移动设备在屏幕上滑动会触发的touch事件 */
 // 以下支持webkit
@@ -185,7 +187,7 @@ MSPointerUp——当手指离开屏幕时触发
 ```
 
 
-- 移动端click屏幕产生200-300ms的延时响应
+##### 移动端click屏幕产生200-300ms的延时响应
 ```
 说明：移动设备上的web网页是有300ms延迟的，玩玩会造成按钮点击延迟甚至是点击失效。
 
@@ -201,9 +203,9 @@ fastclick可以解决在手机上点击事件的300ms延迟
 zepto的touch模块，tap事件也是为了解决在click的延迟问题
 ```
 
-- 简易的fastclick模拟示例。[demo](demo/fastclick.html)
+##### 简易的fastclick模拟示例。[demo](demo/fastclick.html)
 
-```html&javascript
+```html
     <body>
         <h2>fastclick模拟测试</h2>
         <br/>
@@ -231,7 +233,7 @@ zepto的touch模块，tap事件也是为了解决在click的延迟问题
 
 ```
 
-- Rentina显示屏原理及设计方案
+##### Rentina显示屏原理及设计方案
 ```
 说明：retina屏是一种具备超高像素密度的液晶屏，同样大小的屏幕上显示的像素点由1个变为多个，如在同样带下的屏幕上，苹果设备的retina显示屏中，像素点1个变为4个。
 在高清显示屏中的位图被放大，图片会变得模糊，因此移动端的视觉稿通常会设计为传统PC的2倍。
@@ -253,7 +255,7 @@ image-set,webkit私有属性，也是CSS4的属性，为解决Rentina屏幕下�
 ```
 
 
-- 点击元素产生背景或边框怎么去掉
+##### 点击元素产生背景或边框怎么去掉
 ```
 //ios用户点击一个链接，会出现一个半透明灰色遮罩, 如果想要禁用，可设置-webkit-tap-highlight-color的alpha值为0去除灰色半透明遮罩；
 //android用户点击一个链接，会出现一个边框或者半透明灰色遮罩, 不同生产商定义出来额效果不一样，可设置-webkit-tap-highlight-color的alpha值为0去除部分机器自带的效果；
@@ -270,7 +272,7 @@ a,button,input,textarea {
 ```
 
 
-- 美化表单元素
+##### 美化表单元素
 ``` CSS
 //一、使用appearance改变webkit浏览器的默认外观
 input,select { -webkit-appearance:none; appearance: none; }
@@ -290,7 +292,7 @@ input[type=number]::-ms-clear { display:none; }
 ```
 
 
-- 移动端字体单位font-size选择px还是rem
+##### 移动端字体单位font-size选择px还是rem
 ```
 // 如需适配多种移动设备，建议使用rem。以下为参考值：
 html { font-size: 62.5%; }   //10/16 = 62.5%
@@ -298,14 +300,14 @@ html { font-size: 62.5%; }   //10/16 = 62.5%
 body { font-size:12px; font-size:1.2rem; }     
 ```
 
-- 根据屏幕尺寸修改viewpoint来实现自适应
+##### 根据屏幕尺寸修改viewpoint来实现自适应
 ```
 var docEl = window.document.documentElement;
 var width = docEl.getBoundingClientRect().width;
 //根矩屏幕尺寸进行缩放
-if (width !== 640) {
-   var rate = width / 640;
-   var content = 'width=640,minimum-scale=' + rate +
+if (width !== 750) {
+   var rate = width / 750;
+   var content = 'width=750,minimum-scale=' + rate +
                  ',maximum-scale=' + rate +
                  ',initial-scale=' + rate +
                  ',user-scalable=no'
@@ -313,39 +315,63 @@ if (width !== 640) {
 }
 ```
 
-- 根据设备尺寸尺寸来修改rem的值以达到自适应
+##### 根据设备尺寸尺寸来修改rem的值以达到自适应
 
 ```
-// 根据设备尺寸尺寸来修改rem的值以达到自适应
-var tender = {
-	$j_root: document.querySelector("html"),
-	// 设计稿尺寸
-	BASE_SIZE:750,
+<!--动态计算rem-->
+<script type="text/javascript">
+    /**
+     * []
+     * @param  {object} doc [document]
+     * @param  {object} win [window]
+     * @return {void}
+     */
+    (function(doc, win) {
+        var docEl = doc.documentElement;
+        var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
+        var recalc = function() {
+            var clientWidth = docEl.clientWidth;
+            if (!clientWidth) return;
+            if (clientWidth > 750) {
+                clientWidth = 750;
+            }
+            docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+            adjustRem(docEl, clientWidth);
+        };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+        recalc();
+        /**
+         * [adjustRem 自适应rem]
+         * @param  {object} docElE       [doc.documentElement]
+         * @param  {number} clientWidth [屏幕宽度]
+         * @return {void}
+         */
+        function adjustRem(docElE, clientWidth) {
+            if (!clientWidth || clientWidth >= 750) return;
+            var div = document.createElement('div');
+            div.style.width = '1.4rem';
+            div.style.height = '0';
 
-	// 默认的rem值
-	BASE_FONT: 100,
-	/**
-	 * [changeRem 根据尺寸改变rem值]
-	 * @return {[type]} [description]
-	 */
-	changeRem: function() {
-	    var docEl = window.document.documentElement;
-	    // 设备尺寸
-	    var width = docEl.getBoundingClientRect().width;
+            if(!document.body){
+                return;
+            }
 
-	    this.$j_root.style.fontSize = width / this.BASE_SIZE * this.BASE_FONT + "px";
-	},
-	bindEvent:function(){
-	    window.onresize = function(){
-	        tender.changeRem();
-		}
-	}
-};
+            document.body.appendChild(div);
+            var expectWidth = 140 * clientWidth / 750;
+            var fitRadio = (div.clientWidth / expectWidth);
+            if (fitRadio > 1.1 || fitRadio < 0.9) {
+                docElE.style.fontSize = 100 * (clientWidth / 750) / fitRadio + 'px';
+            }
+            document.body.removeChild(div);
+        }
+    })(document, window);
+</script>
 
-tender.bindEvent();
 ```
 
-- 超实用的CSS样式
+##### 超实用的CSS样式
 ```
 //去掉webkit的滚动条——display: none;
 //其他参数,目前在IOS上测试无效
@@ -404,23 +430,13 @@ input::-webkit-input-speech-button {display: none}
 html { -ms-touch-action:none; } //禁止winphone默认触摸事件
 ```
 
-
-- 取消input在ios下，输入的时候英文首字母的默认大写
+##### 取消input在ios下，输入的时候英文首字母的默认大写
 ``` HTML
 <input autocapitalize="off" autocorrect="off" />
 ```
 
-
-- 手机拍照和上传图片
-```
-//IOS有拍照、录像、选取本地图片功能，部分Android只有选择本地图片功能。Winphone不支持
-<input type="file" accept="images/*" />
-<input type="file" accept="video/*" />
-```
-
-
-- 屏幕旋转的事件和样式
-``` JS&CSs
+##### 屏幕旋转的事件和样式
+``` JS
 //JS处理
 function orientInit(){
 	var orientChk = document.documentElement.clientWidth > document.documentElement.clientHeight?'landscape':'portrait';
@@ -444,7 +460,7 @@ window.addEventListener('onorientationchange' in window?'orientationchange':'res
 ```
 
 
-- audio元素和video元素在ios和andriod中无法自动播放
+##### audio元素和video元素在ios和andriod中无法自动播放
 ```
 //音频，写法一
 <audio src="music/bg.mp3" autoplay loop controls>你的浏览器还不支持哦</audio>
@@ -472,7 +488,7 @@ document.addEventListener("WeixinJSBridgeReady", function () {
 //3. 微信中，单纯的将video或者audio隐藏并暂停无效，需要动态的移除和创建该dom元素。这种情况多见于弹出框中有video或audio
 ```
 
-- 重力感应事件
+##### 重力感应事件
 ```
 // 运用HTML5的deviceMotion，调用重力感应事件
 if(window.DeviceMotionEvent){
@@ -503,7 +519,7 @@ function yaoAfter(){
 ```
 
 
-- 微信浏览器用户调整字体大小后页面矬了，怎么阻止用户调整
+##### 微信浏览器用户调整字体大小后页面矬了，怎么阻止用户调整
 ```
 //以下代码可使Android机页面不再受用户字体缩放强制改变大小，但是会有1S左右延时，期间可以考虑loading来处理
 if (typeof(WeixinJSBridge) == "undefined") {
@@ -528,7 +544,7 @@ body { -webkit-text-size-adjust:100%!important; }
 //最好的解决方案：最好使用rem或百分比布局
 ```
 
-- 定位的坑
+##### 定位的坑
 ```
 //fixed定位
 //1.ios下fixed元素容易定位出错，软键盘弹出时，影响fixed元素定位
@@ -566,7 +582,7 @@ if(ua>-1){
 ```
 
 
-- 播放视频不全屏
+##### 播放视频不全屏
 ``` HTML
 <!--
 1.ios7+支持自动播放
@@ -578,7 +594,7 @@ webkit-playsinline="true"
 <video x-webkit-airplay="true" webkit-playsinline="true" preload="auto" autoplay src="http://"></video>
 ```
 
-- JS判断设备
+##### JS判断设备
 ```
 function deviceType(){
 	var ua = navigator.userAgent;
@@ -595,7 +611,7 @@ window.addEventListener('resize', function(){
 })
 ```
 
-- JS判断微信浏览器
+##### JS判断微信浏览器
 ```
 function isWeixin(){
 	var ua = navigator.userAgent.toLowerCase();
@@ -608,7 +624,7 @@ function isWeixin(){
 ```
 
 
-- android 2.3 bug
+##### android 2.3 bug
 ```
 //1.@-webkit-keyframes 需要以0%开始100%结束，0%的百分号不能去掉
 //2.after和before伪类无法使用动画animation
@@ -617,7 +633,7 @@ function isWeixin(){
 -webkit-transform: translate(-50%,-50%) scale(-0.5, 1)
 ```
 
-- android 4.x bug
+##### android 4.x bug
 ```
 //1.三星 Galaxy S4中自带浏览器不支持border-radius缩写
 //2.同时设置border-radius和背景色的时候，背景色会溢出到圆角以外部分
@@ -626,7 +642,7 @@ function isWeixin(){
 ```
 
 
-- 消除transition闪屏
+##### 消除transition闪屏
 ``` CSS
 .css {
 	-webkit-transform-style: preserve-3d;
@@ -636,7 +652,7 @@ function isWeixin(){
 ```
 
 
-- 开启硬件加速
+##### 开启硬件加速
 ``` CSS
 //目前，像Chrome/Filefox/Safari/IE9+以及最新版本Opera都支持硬件加速，当检测到某个DOM元素应用了某些CSS规则时就会自动开启，从而解决页面闪白，保证动画流畅。
 
@@ -673,7 +689,7 @@ function isWeixin(){
 
 ```
 
-- 解决ios端overflow：scroll时滑动卡顿问题
+##### 解决ios端overflow：scroll时滑动卡顿问题
 ```
 .css {
     -webkit-overflow-scrolling:touch;
@@ -693,7 +709,7 @@ function isWeixin(){
 	//3.修改及时生效；
 ```
 
-- IOS 事件委托的坑
+##### IOS 事件委托的坑
 
 当使用委托给一个元素添加click事件时，如果事件是委托到 document 或 body 上，并且委托的元素是默认不可点击的（如 div, span 等），此时 click 事件会失效。
 解决办法：
@@ -704,14 +720,14 @@ function isWeixin(){
 ​4. 给​目标元素加一条样式规则 cursor: pointer;（推荐）
 ```
 
-- IOS `<input class='xx-xx' readonly type="text/>`标签 readonly后仍然能出现焦点效果（光标在input中）
+##### IOS `<input class='xx-xx' readonly type="text/>`标签 readonly后仍然能出现焦点效果（光标在input中）
 解决办法是给input设置不能选中的样式
 ```
 .xx-xx {-webkit-user-select:none; user-select: none; }
 ```
 
 
-- 最小字体的总结【参考http://www.cnblogs.com/he-lian/p/4512276.html】
+##### 最小字体的总结【参考http://www.cnblogs.com/he-lian/p/4512276.html】
 
 ```
  1.     iphone6-plus、iphone5：     微信、QQ直接打开、safari中字体可以从最1px字体开始；
@@ -730,7 +746,34 @@ function isWeixin(){
     - chrome中限制最小12px。
 ```
 
-- 移动端滚动到底部时加载代码。[demo](demo/pulldownLoad.html)
+##### Chrome谷歌浏览器下不支持css字体小于12px的解决办法
+
+chrome下css设置字体大小为12px及以下时，显示都是一样大小，都是默认12px；
+对于旧版的chrome添加私有属性webkit-text-size-adjust:none;新版无效，需要通过其他方式来处理。
+
+```
+<div class="smallFont">
+     这里是12号字体<span>CHROME下小字体测试8px</span>
+</div>
+
+.smallFont{
+    font-size: 12px;
+    width: 300px;
+    padding: 25px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 20px;
+}
+.smallFont span{
+    font-size:8px;/*其他浏览器直接设置字体即可*/
+    -webkit-text-size-adjust:none;/*老版本chrome支持*/
+    -webkit-transform:scale(0.66); /*chrome下通过缩放解决小字体显示问题*/
+    transform-origin:0;/*改变基点*/
+    display: inline-block;
+}
+```
+
+##### 移动端滚动到底部时加载代码。[demo](demo/pulldownLoad.html)
 ```
 var $container = document.querySelector('.wrapper');
 // 可见高度
@@ -748,7 +791,7 @@ $container.addEventListener('scroll',function(e){
 });
 ```
 
-- 图片的懒加载，img标签进入时才加载图片[demo](demo/lazyload2.html)
+##### 图片的懒加载，img标签进入时才加载图片[demo](demo/lazyload2.html)
 ```
 <body>
     <h3>测试图片懒加载功能</h3>
@@ -789,7 +832,7 @@ $container.addEventListener('scroll',function(e){
 </script>
 ```
 
-- 关于移动端设置字体微软雅黑的问题。
+##### 关于移动端设置字体微软雅黑的问题。
 
 ```
 1. 各个手机系统有自己的默认字体，且都不支持微软雅黑
@@ -804,7 +847,7 @@ body{
 }
 ```
 
-- IOS的字体锯齿问题
+##### IOS的字体锯齿问题
 ```
 IOS上，做3D变换时，经常会出现字体模糊的情况，通过-webkit-font-smoothing属性的设置可解决大部分的字体模糊情况，参考<https://segmentfault.com/q/1010000000467910>。
 
@@ -821,7 +864,7 @@ body{
 
 ```
 
-- 多行文字的截断，最后一段显示....
+##### 多行文字的截断，最后一段显示....
 ```
 .demo{
     display: -webkit-box;    //1.设置display类型为-webkit-box
@@ -834,7 +877,7 @@ body{
 }
 ```
 
-- 防止微信webview 调整字体大小
+##### 防止微信webview 调整字体大小
 ios 和 微信的调整方式不一致
 ```
 <!--针对IOS-->
@@ -868,10 +911,13 @@ ios 和 微信的调整方式不一致
     })();
 </script>
 ```
+>详细文章见这里：<https://github.com/AlanZhang001/webtouch/blob/master/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%AD%97%E4%BD%93%E6%94%BE%E5%A4%A7%E9%97%AE%E9%A2%98%E7%9A%84%E7%A0%94%E7%A9%B6.md>
 
-- window.open 不能在ajax的异步回调中使用，且ios中(ios>9.0),touchstart,touchend 事件是不能触发window.open 的
+##### window.open
+window.open 不能在ajax的异步回调中使用，且ios中(ios>9.0),touchstart,touchend 事件是不能触发window.open 的
 
-- js中toFixed在的作用是用定点表示法来格式化一个数，即小数点保留多少位，但是该方法在保留小数时存在四舍五入的问题。
+##### toFixed问题
+js中toFixed在的作用是用定点表示法来格式化一个数，即小数点保留多少位，但是该方法在保留小数时存在四舍五入的问题。
 如：
 ```
 1.35.toFixed(1) // 1.4 正确
@@ -956,7 +1002,7 @@ function toFixed(num, digits, isRound) {
 }
 ```
 
-- 计算字符串所占的内存字节数,而不是字符串长度
+##### 计算字符串所占的内存字节数,而不是字符串长度
 ```
     /**
      * 计算字符串所占的内存字节数，默认使用UTF-8的编码方式计算，也可制定为UTF-16
@@ -1015,7 +1061,8 @@ function toFixed(num, digits, isRound) {
     }
 ```
 
-- https站点中，如果应用到了第三发的组件（如腾讯视频），有时候会存在https站点中引用http资源的情况，会出现警告甚至报错
+##### Content-Security-Policy
+https站点中，如果应用到了第三发的组件（如腾讯视频），有时候会存在https站点中引用http资源的情况，会出现警告甚至报错
 比如 ![](https://developers.google.com/web/fundamentals/security/prevent-mixed-content/imgs/passive-mixed-content-warnings.png?hl=zh-cn)
 
 可以在head中增加如下标签：
@@ -1026,7 +1073,7 @@ function toFixed(num, digits, isRound) {
 
 详细查看:(防止混合内容)[https://developers.google.com/web/fundamentals/security/prevent-mixed-content/fixing-mixed-content?hl=zh-cn]
 
-- ios上，从A页面跳入B页面，再次返回A页面时，html不会刷新，但是JS会再次执行。
+##### ios上，从A页面跳入B页面，再次返回A页面时，html不会刷新，但是JS会再次执行。
 ```
 <!--移动端回退时，reload-->
 <script type="text/javascript">
