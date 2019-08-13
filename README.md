@@ -246,6 +246,8 @@ zepto的touch模块，tap事件也是为了解决在click的延迟问题
 
 ```
 
+一遍更加全面的文章<https://zhiyaoli.com/program/experience/300ms-delay-on-mobile-browsers.html>
+
 ##### Rentina显示屏原理及设计方案
 ```
 说明：retina屏是一种具备超高像素密度的液晶屏，同样大小的屏幕上显示的像素点由1个变为多个，如在同样带下的屏幕上，苹果设备的retina显示屏中，像素点1个变为4个。
